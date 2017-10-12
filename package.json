@@ -15,7 +15,16 @@
     "categories": [
         "Other"
     ],
-    "keywords": ["Copy Active File Path", "clipboard", "copy", "command", "base", "path", "forward slashes", "slashes"],
+    "keywords": [
+        "Copy Active File Path",
+        "clipboard",
+        "copy",
+        "command",
+        "base",
+        "path",
+        "forward slashes",
+        "slashes"
+    ],
     "activationEvents": [
         "onCommand:extension.copyProjectPath"
     ],
@@ -24,9 +33,22 @@
         "commands": [
             {
                 "command": "extension.copyProjectPath",
-                "title": "Copy Project Path of Active File"
+                "title": "Copy Project Based Path"
             }
-        ]
+        ],
+        "keybindings": [
+            {
+                "command": "extension.copyProjectPath",
+                "key": "ctrl+alt+c"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "extension.copyProjectPath"
+                }
+            ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
