@@ -14,8 +14,14 @@ export function activate(context: vscode.ExtensionContext) {
         if (rootPath && activeTextEditor) {
             const fullPath = activeTextEditor.document.uri.path;
             path = fullPath.replace(`${rootPath}${UNIX_SEPARATOR}`, '');
+            const sep = path.indexOf(':', 0);
+            if (sep < 0)
+                path = rootFolder.name + UNIX_SEPARATOR + path; // keep the parent dir name
+            else
+                path = path.substring(sep + 2);//each the partition header like '/d:/'
         }
-        ncp.copy(path, () => console.log('File path has been copied to the system clipboard'));
+        ncp.copy(path, () =>
+            console.log('File path has been copied to the system clipboard'));
     });
 
     context.subscriptions.push(disposable);
